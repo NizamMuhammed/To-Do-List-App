@@ -4,33 +4,82 @@
     <meta charset="UTF-8" />
     <title>Home</title>
     <style>
-        body {
-          background-color: ghostwhite;
-        }
-        h1 {
-          color: darkslategray;
-        }
-        h2 {
-            color: darkkhaki
-        }
+      body {
+        background-color: ghostwhite;
+      }
+      h1 {
+        color: darkslategray;
+      }
+      h2 {
+        color: darkkhaki;
+        padding-left: 50px;
+      }
+      .appContainer {
+        padding-left: 630px;
+      }
+      .delete {
+        margin-left: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      .edit {
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      .time {
+        font-style: italic;
+      }
+      .listItem {
+        font-size: large;
+      }
+      input[type="text"] {
+        background-color: #b4b2b2;
+        color: rgb(53, 48, 48);
+        border: 2px solid red;
+        border-radius: 4px;
+      }
     </style>
   </head>
   <body>
-    <h1>To-Do List App</h1>
-    <form action="/quotes" method="POST">
-      <input type="text" placeholder="Add new item" name="title" />
-      <button type="add">Add</button>
-    </form>
-    <h2>To-Do List</h2>
-    <ul class="toDoItems">
-      <% for(var i = 0; i < toDo.length; i++) {%>
-      <li class="item">
-        <span><%= toDo[i].title %></span>
-        <div><button type="edit">Edit</button>
-        <button type="delete">Delete</button>
-      </div>
-      </li>
-      <% } %>
-    </ul>
+    <script src="/public/main.js"></script>
+    <div class="appContainer">
+      <h1>To-Do List App</h1>
+      <form action="/create" method="POST">
+        <input type="text" placeholder="Add new item" name="title" />
+        <input id="inputTime" name="createdTime" type="hidden" />
+        <script>
+          var today = new Date();
+          //var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+          var date =
+            today.getDate() +
+            "-" +
+            (today.getMonth() + 1) +
+            "-" +
+            today.getFullYear();
+          var time =
+            today.getHours() +
+            ":" +
+            today.getMinutes() +
+            ":" +
+            today.getSeconds();
+          fullTime = date + "::" + time;
+          document.getElementById("inputTime").value = fullTime;
+        </script>
+        <button type="add">Add</button>
+      </form>
+      <h2>To-Do List</h2>
+      <ul class="toDoItems">
+        <% for(var i = 0; i < toDo.length; i++) {%>
+        <li class="item">
+          <span class="listItem"><%= toDo[i].title %></span>
+          <div class="time">Created at: <%= toDo[i].createdTime %></div>
+          <div>
+            <button type="edit" class="edit">Edit</button>
+            <button type="delete" class="delete">Delete</button>
+          </div>
+        </li>
+        <% } %>
+      </ul>
+    </div>
   </body>
 </html>

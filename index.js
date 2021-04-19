@@ -4,6 +4,7 @@ const MongoClient = require("mongodb").MongoClient;
 var app = express();
 
 app.set("view engine", "ejs");
+app.use(express.static('public'));
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -23,8 +24,7 @@ MongoClient.connect(
     console.log("Connected to Database");
     const db = client.db("test");
     const toDoList = db.collection("toDo");
-
-    app.post("/quotes", function (req, res) {
+    app.post("/create", function (req, res) {
       toDoList
         .insertOne(req.body)
         .then(function (result) {
@@ -41,12 +41,16 @@ MongoClient.connect(
         .toArray()
         .then(function (results) {
           res.render("index.ejs", { toDo: results });
-          console.log(results)
         })
         .catch(function (error) {
           return console.error(error);
         });
     });
+
+
+    app.put('/update', function (req, res) {
+      console.log(req.body);
+  });  
   }
 );
 
