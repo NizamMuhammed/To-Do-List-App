@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <title>To Do List</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="css/images/favicon.ico" />
   </head>
 
   <body>
@@ -12,14 +13,18 @@
       <h1><%= Day %></h1>
     </div>
     <div class="box">
-      <form class="item" action="/" method="POST">
+      <form class="item" action="/home" method="POST">
         <input type="text" placeholder="New Item" name="item" autocomplete="off">
-        <button type="submit">+</button>        
+        <button type="submit" class="add">+</button>        
       </form>
       <% for (var i=0; i<newItem.length; i++) { %>
         <div class="item">
           <input type="checkbox">
-          <p><%= newItem[i] %></p>
+          <p><%= newItem[i].title %></p>
+          <form action="/home/delete" method="POST">
+            <input type="hidden" name="id" value='<%= newItem[i]._id %>''>
+            <button type="submit" class ="delete">🗑️</button>
+          </form>
         </div>             
       <% } %>
     </div> 

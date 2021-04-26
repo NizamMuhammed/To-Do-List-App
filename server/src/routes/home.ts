@@ -1,16 +1,44 @@
 import express from "express";
+import mongoose from "mongoose";
 
 let router = express.Router();
-let app = express();
-app.set("view engine", "ejs");
-var items = ["Buy Milk", "Buy Groceries"];
+
+const todoSchema = new mongoose.Schema(
+  {
+    title: String,
+    createdAt: String,
+  },
+  {
+    versionKey: false,
+  }
+);
+
+const ToDo = mongoose.model("toDo", todoSchema);
 
 router.get("/", function (req, res) {
-  res.render("list", { Day: "Items to do", newItem: items });
+  ToDo.find({}, function (err, data) {
+    res.render("list", { Day: "To-Do List", newItem: data });
+  });
 });
 
-router.get("/list", function (req, res) {
-  res.send("list");
+router.post("/", function (req, res) {
+  let date = new Date().toLocaleString("en-IN");
+  const toDo = new ToDo({
+    title: req.body.item,
+    createdAt: date,
+  });
+  toDo.save();
+  res.redirect("/home");
+});
+
+router.post("/delete", function (req, res) {
+  console.log(req.body.id)
+  ToDo.deleteOne({ _id: req.body.id }, function(err) {
+    if(!err) {
+      console.log("Deleted")
+    }
+  });
+  res.redirect("/home");
 });
 
 export default router;
