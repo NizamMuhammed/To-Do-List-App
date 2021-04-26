@@ -1,14 +1,14 @@
 import * as dotenv from "dotenv";
-import * as mongoose from "mongoose";
+import mongoose from "mongoose";
 
 dotenv.config();
-console.log(dotenv);
-mongoose.connect(
+const connect = (dbName: string) => {
+  mongoose.connect(
     "mongodb+srv://" +
       process.env.DB_USER +
       ":" +
       process.env.DB_PASS +
-      "@todolistcluster.5f8dd.mongodb.net/test?retryWrites=true&w=majority",
+      "@todolistcluster.5f8dd.mongodb.net/"+ dbName +"?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useFindAndModify: false,
@@ -20,3 +20,6 @@ mongoose.connect(
       }
     }
   );
+}
+
+export default connect
