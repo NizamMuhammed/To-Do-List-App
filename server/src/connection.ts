@@ -3,8 +3,7 @@ import * as mongoose from "mongoose";
 
 dotenv.config();
 console.log(dotenv);
-const connection = () => {
-  mongoose.connect(
+mongoose.connect(
     "mongodb+srv://" +
       process.env.DB_USER +
       ":" +
@@ -21,6 +20,3 @@ const connection = () => {
       }
     }
   );
-};
-
-export default connection;
