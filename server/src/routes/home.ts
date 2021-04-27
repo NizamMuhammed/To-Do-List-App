@@ -51,15 +51,18 @@ router.post("/update", function (req, res) {
     });
   }
   else {
-    ToDo.findOneAndUpdate({ _id: req.body.id }, 
+    if(req.body.title != '')
+    {
+      ToDo.findOneAndUpdate({ _id: req.body.id }, 
       {title: req.body.title }, null, function (err, docs) {
-      if (err){
+        if (err){
           console.log(err)
-      }
-      else{
+        }
+        else{
           console.log("Updated");
-      }
-    });
+        }
+      });
+    }
     res.redirect("/home")
   }
 });
