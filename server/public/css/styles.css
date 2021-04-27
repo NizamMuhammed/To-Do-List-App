@@ -106,7 +106,22 @@ button.delete {
   border-radius: 50%;
   border-color: transparent;
   background-color: transparent;
-  font-size: 30px;
+  font-size: 20px;
   padding-bottom: 6px;
   border-width: 0;
+}
+
+button.update {
+  min-height: 50px;
+  width: 40px;
+  border-radius: 50%;
+  border-color: transparent;
+  background-color: transparent;
+  font-size: 20px;
+  padding-bottom: 6px;
+  border-width: 0;
+}
+
+form.button {
+  margin: 0;
 }

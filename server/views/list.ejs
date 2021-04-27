@@ -10,7 +10,7 @@
 
   <body>
     <div class="box" id="heading">
-      <h1><%= Day %></h1>
+      <h1>To-Do List</h1>
     </div>
     <div class="box">
       <form class="item" action="/home" method="POST">
@@ -21,7 +21,11 @@
         <div class="item">
           <input type="checkbox">
           <p><%= newItem[i].title %></p>
-          <form action="/home/delete" method="POST">
+          <form action="/home/update" method="POST" class="button">
+            <input type="hidden" name="id" value='<%= newItem[i]._id %>''>
+            <button type="submit" class ="update">🖊️</button>
+          </form>
+          <form action="/home/delete" method="POST" class="button">
             <input type="hidden" name="id" value='<%= newItem[i]._id %>''>
             <button type="submit" class ="delete">🗑️</button>
           </form>

@@ -20,7 +20,7 @@ const ToDo = mongoose.model("toDo", todoSchema);  //toDos is the collection name
 
 router.get("/", function (req, res) {
   ToDo.find({}, function (err, data) {
-    res.render("list", { Day: "To-Do List", newItem: data });
+    res.render("list", { newItem: data });
   });
 });
 
@@ -35,7 +35,6 @@ router.post("/", function (req, res) {
 });
 
 router.post("/delete", function (req, res) {
-  console.log(req.body.id);
   ToDo.deleteOne({ _id: req.body.id }, function (err) {
     if (!err) {
       console.log("Deleted");
@@ -43,5 +42,27 @@ router.post("/delete", function (req, res) {
   });
   res.redirect("/home");
 });
+
+
+router.post("/update", function (req, res) {
+  if(req.body.edited != 1) {
+    ToDo.find({}, function (err, data) {
+    res.render("update", { newItem: data, id: req.body.id });
+    });
+  }
+  else {
+    ToDo.findOneAndUpdate({ _id: req.body.id }, 
+      {title: req.body.title }, null, function (err, docs) {
+      if (err){
+          console.log(err)
+      }
+      else{
+          console.log("Original Doc : ",docs);
+      }
+    });
+    res.redirect("/home")
+  }
+});
+
 
 export default router;

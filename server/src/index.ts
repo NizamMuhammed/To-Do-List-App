@@ -18,7 +18,7 @@ connect();
 app.use("/home", router); //Declaring that the route '/home' can be used
 
 app.get("/", (req, res) => {
-  res.redirect("/home")  //Redirecting / to /home
+  res.redirect("/home")  //Redirecting '/' to '/home'
 })
 
 app.listen(port, () => {
