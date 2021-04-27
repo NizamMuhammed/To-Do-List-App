@@ -14,7 +14,7 @@ app.use(
   })
 );
 const port = process.env.PORT;
-connect("test");
+connect();
 app.use("/home", router); //Declaring that the route '/home' can be used
 
 app.get("/", (req, res) => {
