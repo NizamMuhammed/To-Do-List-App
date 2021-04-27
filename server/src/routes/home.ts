@@ -5,7 +5,10 @@ let router = express.Router();
 
 const todoSchema = new mongoose.Schema(
   {
-    title: String,
+    title: {
+      type: String,
+      required: true
+     },
     createdAt: String,
   },
   {
@@ -32,10 +35,10 @@ router.post("/", function (req, res) {
 });
 
 router.post("/delete", function (req, res) {
-  console.log(req.body.id)
-  ToDo.deleteOne({ _id: req.body.id }, function(err) {
-    if(!err) {
-      console.log("Deleted")
+  console.log(req.body.id);
+  ToDo.deleteOne({ _id: req.body.id }, function (err) {
+    if (!err) {
+      console.log("Deleted");
     }
   });
   res.redirect("/home");
