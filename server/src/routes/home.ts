@@ -16,7 +16,7 @@ const todoSchema = new mongoose.Schema(   //creating a new MOngoose schema
   }
 );
 
-const ToDo = mongoose.model("toDo", todoSchema);  //toDos is the collection name that will be generated
+const ToDo = mongoose.model("toDo", todoSchema);  //toDos is the collection name that will be generated in AtlasDB
 
 router.get("/", function (req, res) {
   ToDo.find({}, function (err, data) {
@@ -57,7 +57,7 @@ router.post("/update", function (req, res) {
           console.log(err)
       }
       else{
-          console.log("Original Doc : ",docs);
+          console.log("Updated");
       }
     });
     res.redirect("/home")
