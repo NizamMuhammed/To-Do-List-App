@@ -3,11 +3,11 @@ import mongoose from "mongoose";
 
 let router = express.Router();
 
-const todoSchema = new mongoose.Schema(
+const todoSchema = new mongoose.Schema(   //creating a new MOngoose schema
   {
     title: {
       type: String,
-      required: true
+      required: true  //String should be non-empty to be added to the List
      },
     createdAt: String,
   },
@@ -16,7 +16,7 @@ const todoSchema = new mongoose.Schema(
   }
 );
 
-const ToDo = mongoose.model("toDo", todoSchema);
+const ToDo = mongoose.model("toDo", todoSchema);  //toDos is the collection name that will be generated
 
 router.get("/", function (req, res) {
   ToDo.find({}, function (err, data) {

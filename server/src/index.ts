@@ -15,10 +15,10 @@ app.use(
 );
 const port = process.env.PORT;
 connect("test");
-app.use("/home", router);
+app.use("/home", router); //Declaring that the route '/home' can be used
 
 app.get("/", (req, res) => {
-  res.redirect("/home")
+  res.redirect("/home")  //Redirecting / to /home
 })
 
 app.listen(port, () => {
