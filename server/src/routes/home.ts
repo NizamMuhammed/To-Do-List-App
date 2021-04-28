@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 let router = express.Router();
 
-const todoSchema = new mongoose.Schema(   //creating a new MOngoose schema
+const todoSchema = new mongoose.Schema(   //creating a new Mongoose schema
   {
     title: {
       type: String,

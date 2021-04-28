@@ -23,7 +23,7 @@
           <p><%= newItem[i].title %></p>
           <form action="/home/update" method="POST" class="button">
             <input type="hidden" name="id" value='<%= newItem[i]._id %>''>
-            <button type="submit" class ="update">🖊️</button>
+            <button type="submit" class ="update">✏️</button>
           </form>
           <form action="/home/delete" method="POST" class="button">
             <input type="hidden" name="id" value='<%= newItem[i]._id %>''>
