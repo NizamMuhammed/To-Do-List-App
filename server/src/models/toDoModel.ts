@@ -12,7 +12,7 @@ const todoSchema: mongoose.Schema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true, versionKey: false }
 );
 
-export default mongoose.model<toDoInterface>("Todo", todoSchema)
+export default mongoose.model<toDoInterface>("Todo", todoSchema);
