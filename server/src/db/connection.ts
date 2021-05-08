@@ -29,6 +29,7 @@ const connect = (app: Express) => {
       });
     })
     .catch((error) => {
+      console.log("Connection Error")
       throw error;
     });
 };
