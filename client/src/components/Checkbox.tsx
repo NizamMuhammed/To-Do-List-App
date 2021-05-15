@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Checkbox(props: { status: boolean }) {
-  return <input type="checkbox" checked={props.status}></input>;
+  const [isChecked, setIsChecked] = useState(props.status)
+
+  function handleChange() {
+    setIsChecked(!isChecked)
+  }
+  
+  return <input type="checkbox" checked={isChecked} onChange={handleChange}></input>;
 }
 
 export default Checkbox;

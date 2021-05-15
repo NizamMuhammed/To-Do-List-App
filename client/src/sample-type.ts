@@ -1,7 +1,7 @@
 interface itemType {
-    _id: String
-    title: String
-    createdAt: String
+    _id: string
+    title: string
+    createdAt: string
     status: boolean
 }
 
