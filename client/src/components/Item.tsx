@@ -9,7 +9,7 @@ function Item(props: { data: itemType }) {
   const itemData: itemType = props.data;
   return (
     <div className="item">
-      <Checkbox status={itemData.status} />
+      <Checkbox completed={itemData.completed} />
       <ItemText title={itemData.title} />
       <Edit />
       <Delete />

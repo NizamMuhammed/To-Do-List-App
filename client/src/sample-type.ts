@@ -2,7 +2,7 @@ interface itemType {
     _id: string
     title: string
     createdAt: string
-    status: boolean
+    completed: boolean
 }
 
 export default itemType
