@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-function Checkbox(props: { status: boolean }) {
-  const [isChecked, setIsChecked] = useState(props.status)
+function Checkbox(props: { completed: boolean }) {
+  const [isChecked, setIsChecked] = useState(props.completed)
 
   function handleChange() {
     setIsChecked(!isChecked)
