@@ -14,4 +14,45 @@ const getToDo = async (
   }
 };
 
-export { getToDo };
+const createToDo = async (
+  req: express.Request,
+  res: express.Response
+): Promise<void> => {
+  const toDo = new ToDo({
+    title: req.body.title,
+    completed: req.body.completed,
+  });
+  toDo.save();
+};
+
+const deleteToDo = async (
+  req: express.Request,
+  res: express.Response
+): Promise<void> => {
+  ToDo.deleteOne({ _id: req.body.id }, function (err) {
+    if (!err) {
+      console.log("Deleted");
+    }
+  });
+};
+
+const statusUpdate = async (
+  req: express.Request,
+  res: express.Response
+): Promise<void> => {
+  ToDo.findOneAndUpdate(
+    { _id: req.body.id },
+    { completed: req.body.completed },
+    null,
+    function (err, docs) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Updated");
+      }
+    }
+  );
+  res.redirect("/home");
+};
+
+export { getToDo, createToDo, deleteToDo, statusUpdate };
