@@ -23,7 +23,7 @@ const createToDo = async (
     completed: req.body.completed,
   });
   toDo.save();
-  res.redirect("/home")
+  res.redirect("/home");
 };
 
 const deleteToDo = async (
@@ -35,7 +35,7 @@ const deleteToDo = async (
       console.log("!!!! Deleted one item !!!!");
     }
   });
-  res.redirect("/home")
+  res.redirect("/home");
 };
 
 const statusUpdate = async (
@@ -50,7 +50,7 @@ const statusUpdate = async (
       if (err) {
         console.log(err);
       } else {
-        console.log("Status of item changed");
+        console.log("__Status of item changed__");
       }
     }
   );
