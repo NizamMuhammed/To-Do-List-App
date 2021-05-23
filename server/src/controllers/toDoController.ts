@@ -23,6 +23,7 @@ const createToDo = async (
     completed: req.body.completed,
   });
   toDo.save();
+  res.redirect("/home")
 };
 
 const deleteToDo = async (
@@ -31,9 +32,10 @@ const deleteToDo = async (
 ): Promise<void> => {
   ToDo.deleteOne({ _id: req.body.id }, function (err) {
     if (!err) {
-      console.log("Deleted");
+      console.log("!!!! Deleted one item !!!!");
     }
   });
+  res.redirect("/home")
 };
 
 const statusUpdate = async (
@@ -48,7 +50,7 @@ const statusUpdate = async (
       if (err) {
         console.log(err);
       } else {
-        console.log("Updated");
+        console.log("Status of item changed");
       }
     }
   );
