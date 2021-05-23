@@ -32,7 +32,7 @@ const deleteToDo = async (
 ): Promise<void> => {
   ToDo.deleteOne({ _id: req.body.id }, function (err) {
     if (!err) {
-      console.log("!!!! Deleted one item !!!!");
+      console.log("Deleted one item");
     }
   });
   res.redirect("/home");
@@ -50,7 +50,7 @@ const statusUpdate = async (
       if (err) {
         console.log(err);
       } else {
-        console.log("__Status of item changed__");
+        console.log("Status of item changed");
       }
     }
   );
