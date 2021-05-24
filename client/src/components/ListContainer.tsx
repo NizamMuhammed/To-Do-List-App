@@ -11,7 +11,12 @@ function ListContainer() {
     axios
       .get("http://localhost:4000")
       .then((res) => {
-        setList(res.data.todos);
+        let trueArr:itemType[] = [], falseArr:itemType[] = []
+        res.data.todos.map((item:itemType) => {
+          return item.completed ? trueArr.push(item) : falseArr.push(item)
+        })
+        const listItems:itemType[] = [...falseArr, ...trueArr] 
+        setList(listItems);
       })
       .catch((err) => {
         console.log(`Fetch error: ${err}`);

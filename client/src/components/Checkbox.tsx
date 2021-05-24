@@ -14,6 +14,7 @@ function Checkbox(props: { completed: boolean; id: string }) {
       .post("http://localhost:4000/home/status", data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+      window.location.reload()
   };
 
   return (
