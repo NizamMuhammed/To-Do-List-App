@@ -6,7 +6,7 @@ function Edit(props: { id: string; title: string }) {
   const dispatch = useDispatch();
 
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault(); //To hinder the page refresh, which is a default Event
     dispatch(editClicked(props.id, props.title));
   };
 

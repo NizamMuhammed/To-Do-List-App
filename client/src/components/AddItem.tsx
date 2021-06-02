@@ -1,6 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 
+/**
+ * Uses axios to post newly entered data
+ * onSubmit rerenders the page and the newly added item is listed
+ * @returns JSX Form Element
+ */
+
 function AddItem() {
   const [textData, setText] = useState<string>("");
 

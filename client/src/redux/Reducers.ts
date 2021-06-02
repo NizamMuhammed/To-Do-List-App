@@ -5,7 +5,9 @@ export const initialState = {
   itemId: "",
   itemTitle: "",
 };
-
+/**
+ * State value is changed according to action type
+ */
 export const editReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case EDIT_CLICKED:
@@ -25,8 +27,8 @@ export const editReducer = (state = initialState, action: any) => {
     case EDITED_TITLE:
       return {
         ...state,
-        itemTitle: action.payload
-      }
+        itemTitle: action.payload,
+      };
     default:
       return state;
   }

@@ -11,11 +11,16 @@ function ListContainer() {
     axios
       .get("http://localhost:4000")
       .then((res) => {
-        let trueArr:itemType[] = [], falseArr:itemType[] = []
-        res.data.todos.map((item:itemType) => {
-          return item.completed ? trueArr.push(item) : falseArr.push(item)
-        })
-        const listItems:itemType[] = [...falseArr, ...trueArr] 
+        let trueArr: itemType[] = [],
+          falseArr: itemType[] = [];
+        res.data.todos.map((item: itemType) => {
+          return item.completed ? trueArr.push(item) : falseArr.push(item);
+        });
+        /**
+         * Completed items are sorted into different arrays and
+         * then merged back according to priority
+         */
+        const listItems: itemType[] = [...falseArr, ...trueArr];
         setList(listItems);
       })
       .catch((err) => {

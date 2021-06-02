@@ -8,10 +8,15 @@ import Accept from "./Accept";
 import Cancel from "./Cancel";
 import { useSelector, useDispatch } from "react-redux";
 import { rootStateType } from "../redux/ActionType";
-import { editedTitle } from "../redux/Actions"
+import { editedTitle } from "../redux/Actions";
 
 function Item(props: { data: itemType }) {
   const itemData: itemType = props.data;
+  /**
+   * useSelector() is a react-redux hook used to get the state values
+   * and store it in a variable for using that in the component
+   * rootStateType is of same type as the State in Redux Store
+   */
   const editClickedStatus = useSelector(
     (store: rootStateType) => store.editClicked
   );
@@ -19,11 +24,11 @@ function Item(props: { data: itemType }) {
   const editClickedTitle = useSelector(
     (store: rootStateType) => store.itemTitle
   );
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(editedTitle(event.target.value))
-  }
+    dispatch(editedTitle(event.target.value));
+  };
 
   return (
     <div className="item">

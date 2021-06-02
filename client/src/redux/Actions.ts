@@ -1,4 +1,8 @@
 import { EDIT_CLICKED, CANCEL_CLICKED, EDITED_TITLE } from "./ActionType";
+/**
+ * Actions - Specify what operation is to be done by the Reducer
+ * type, payload are used as per convention
+ */
 
 export const editClicked = (id: string, title: string) => {
   return {
@@ -16,6 +20,6 @@ export const editCancel = () => {
 export const editedTitle = (title: string) => {
   return {
     type: EDITED_TITLE,
-    payload: title
+    payload: title,
   };
 };
