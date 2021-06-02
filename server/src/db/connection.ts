@@ -5,8 +5,9 @@ import mongoose from "mongoose";
 dotenv.config();
 const port = process.env.PORT;
 const connect = (app: Express) => {
-  /* Use mongoose.connect() to make a connection to MongoDB and
-  use promises to listen at port, if the promises is fulfilled */
+  /* Use mongoose.connect() to make a connection to MongoDB
+   ** Use promises to listen at port else to throw Error
+   */
 
   mongoose
     .connect(
@@ -29,7 +30,7 @@ const connect = (app: Express) => {
       });
     })
     .catch((error) => {
-      console.log("Connection Error")
+      console.log("Connection Error");
       throw error;
     });
 };

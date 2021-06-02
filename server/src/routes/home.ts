@@ -4,9 +4,12 @@ import {
   createToDo,
   deleteToDo,
   statusUpdate,
-  updateToDo
+  updateToDo,
 } from "../controllers/toDoController";
 
+/*
+ **Various routes and the callback functions to be executed
+ */
 const router = express.Router();
 
 router.get("/home", getToDo);

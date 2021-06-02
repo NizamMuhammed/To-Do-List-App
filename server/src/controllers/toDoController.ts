@@ -1,12 +1,18 @@
 import express from "express";
 import { toDoInterface } from "../types/toDoInterface";
 import ToDo from "../models/toDoModel";
-
+/*
+ ** The functions to be executed when each route is called in routes folder files
+ */
 const getToDo = async (
   req: express.Request,
   res: express.Response
 ): Promise<void> => {
   try {
+    /*
+     ** Use mongoose functions to retrieve data from MongoDB and send it in JSON format as response
+     ** The return is a promise of type void
+     */
     const todos: toDoInterface[] = await ToDo.find();
     res.status(200).json({ todos });
   } catch (error) {
@@ -54,7 +60,7 @@ const updateToDo = async (
       }
     }
   );
-  res.redirect("/home")
+  res.redirect("/home");
 };
 
 const statusUpdate = async (
