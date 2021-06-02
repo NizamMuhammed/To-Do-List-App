@@ -36,7 +36,7 @@ function Item(props: { data: itemType }) {
           autoComplete="off"
           autoFocus
           onChange={handleChange}
-          placeholder={editClickedTitle}
+          value={editClickedTitle}
           style={{ width: "240px" }}
         />
       )}

@@ -4,6 +4,7 @@ import {
   createToDo,
   deleteToDo,
   statusUpdate,
+  updateToDo
 } from "../controllers/toDoController";
 
 const router = express.Router();
@@ -15,5 +16,7 @@ router.post("/home", createToDo);
 router.post("/home/delete", deleteToDo);
 
 router.post("/home/status", statusUpdate);
+
+router.post("/home/update", updateToDo);
 
 export default router;

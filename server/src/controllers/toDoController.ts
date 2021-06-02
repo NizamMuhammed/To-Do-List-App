@@ -38,6 +38,25 @@ const deleteToDo = async (
   res.redirect("/home");
 };
 
+const updateToDo = async (
+  req: express.Request,
+  res: express.Response
+): Promise<void> => {
+  ToDo.findOneAndUpdate(
+    { _id: req.body.id },
+    { title: req.body.title },
+    null,
+    function (err, docs) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Updated");
+      }
+    }
+  );
+  res.redirect("/home")
+};
+
 const statusUpdate = async (
   req: express.Request,
   res: express.Response
@@ -57,4 +76,4 @@ const statusUpdate = async (
   res.redirect("/home");
 };
 
-export { getToDo, createToDo, deleteToDo, statusUpdate };
+export { getToDo, createToDo, deleteToDo, statusUpdate, updateToDo };

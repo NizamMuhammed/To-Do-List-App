@@ -1,12 +1,16 @@
 import React from "react";
-import { useDispatch } from "react-redux"
-import { editCancel } from "../redux/Actions";
+import axios from "axios"
 
 function Accept(props: { title: string; id: string }) {
-  const dispatch = useDispatch()
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    dispatch(editCancel())
+    const newData = {
+      title: props.title,
+      id: props.id,
+    }
+    axios
+      .post("http://localhost:4000/home/update", newData)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
