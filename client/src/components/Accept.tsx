@@ -9,7 +9,7 @@ import axios from "axios";
  * @returns JSX Form Element
  */
 function Accept(props: { title: string; id: string }) {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleClick = (event:React.MouseEvent<HTMLElement>) => {
     const newData = {
       title: props.title,
       id: props.id,
@@ -21,11 +21,9 @@ function Accept(props: { title: string; id: string }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginLeft: "0px" }}>
-      <button type="submit" className="update">
+    <button type="button" onClick={handleClick} className="update">
         ✔️
-      </button>
-    </form>
+    </button>
   );
 }
 

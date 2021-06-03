@@ -10,7 +10,7 @@ import React, { useState } from "react";
 function AddItem() {
   const [textData, setText] = useState<string>("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     const newData = {
       title: textData,
       completed: false,
@@ -26,7 +26,12 @@ function AddItem() {
   };
 
   return (
-    <form className="item" onSubmit={handleSubmit}>
+    <form
+      className="item"
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <input
         type="text"
         placeholder="Add new task"
@@ -36,7 +41,7 @@ function AddItem() {
         value={textData}
         onChange={handleChange}
       />
-      <button type="submit" className="add">
+      <button type="button" onClick={handleClick} className="add">
         +
       </button>
     </form>

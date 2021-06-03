@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 function Delete(props: { id: string }) {
-  const handleSubmit = () => {
+  const handleClick = () => {
     axios
       .post("http://localhost:4000/home/delete", { id: props.id })
       .then((res) => console.log(res))
@@ -10,11 +10,9 @@ function Delete(props: { id: string }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <button type="submit" className="delete">
-        🗑️
-      </button>
-    </form>
+    <button type="button" onClick={handleClick} className="delete">
+      🗑️
+    </button>
   );
 }
 

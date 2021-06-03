@@ -11,17 +11,15 @@ function Cancel() {
    */
   const dispatch = useDispatch();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     dispatch(editCancel());
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <button type="submit" className="delete">
+    <button type="button" onClick={handleClick} className="cancel">
         ❌
-      </button>
-    </form>
+    </button>
   );
 }
 
