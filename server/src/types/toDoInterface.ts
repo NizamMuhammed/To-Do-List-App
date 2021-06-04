@@ -4,6 +4,7 @@ import { Document } from "mongoose";
  */
 
 export interface toDoInterface extends Document {
+  id: string;
   title: string;
   completed: boolean;
 }

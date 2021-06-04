@@ -25,6 +25,7 @@ const createToDo = async (
   res: express.Response
 ): Promise<void> => {
   const toDo = new ToDo({
+    id: req.body.id,
     title: req.body.title,
     completed: req.body.completed,
   });
@@ -36,7 +37,7 @@ const deleteToDo = async (
   req: express.Request,
   res: express.Response
 ): Promise<void> => {
-  ToDo.deleteOne({ _id: req.body.id }, function (err) {
+  ToDo.deleteOne({ id: req.body.id }, function (err: any) {
     if (!err) {
       console.log("Deleted one item");
     }
@@ -49,7 +50,7 @@ const updateToDo = async (
   res: express.Response
 ): Promise<void> => {
   ToDo.findOneAndUpdate(
-    { _id: req.body.id },
+    { id: req.body.id },
     { title: req.body.title },
     null,
     function (err, docs) {
@@ -68,7 +69,7 @@ const statusUpdate = async (
   res: express.Response
 ): Promise<void> => {
   ToDo.findOneAndUpdate(
-    { _id: req.body.id },
+    { id: req.body.id },
     { completed: req.body.completed },
     null,
     function (err, docs) {
