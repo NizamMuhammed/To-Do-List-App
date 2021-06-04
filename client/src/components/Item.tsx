@@ -42,7 +42,7 @@ function Item(props: { data: itemType }) {
           autoFocus
           onChange={handleChange}
           value={editClickedTitle}
-          style={{ width: "240px" }}
+          style={{ width: "260px" }}
         />
       )}
       {!(editClickedStatus && editClickedId === itemData._id) ? (

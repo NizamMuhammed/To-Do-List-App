@@ -19,6 +19,7 @@ function AddItem() {
       .post("http://localhost:4000/home", newData)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    setText("")
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

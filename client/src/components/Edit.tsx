@@ -5,17 +5,16 @@ import { editClicked } from "../redux/Actions";
 function Edit(props: { id: string; title: string }) {
   const dispatch = useDispatch();
 
-  const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault(); //To hinder the page refresh, which is a default Event
     dispatch(editClicked(props.id, props.title));
   };
 
   return (
-    <form onSubmit={handleClick}>
-      <button type="submit" className="update">
-        ✏️
-      </button>
-    </form>
+    <button type="button" onClick={handleClick} className="update">
+      ✏️
+    </button>
+    
   );
 }
 
