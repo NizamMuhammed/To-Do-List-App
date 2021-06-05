@@ -10,7 +10,7 @@ import mongoose from "mongoose";
 const todoSchema: mongoose.Schema = new mongoose.Schema(
   {
     id: {
-      type: String,
+      type: Number,
       required: true,
     },
     title: {

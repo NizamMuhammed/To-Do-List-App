@@ -40,6 +40,8 @@ const deleteToDo = async (
   ToDo.deleteOne({ id: req.body.id }, function (err: any) {
     if (!err) {
       console.log("Deleted one item");
+    } else {
+      console.log("Error while deletion: " + err)
     }
   });
   res.redirect("/home");
@@ -55,7 +57,7 @@ const updateToDo = async (
     null,
     function (err, docs) {
       if (err) {
-        console.log(err);
+        console.log("Error while updation: " + err);
       } else {
         console.log("Updated");
       }
