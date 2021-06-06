@@ -25,8 +25,8 @@ function AddItem() {
       .post("http://localhost:4000/home", newData)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    if(textData !== "") {
-      dispatch(newItem(lastID, textData))
+    if (textData !== "") {
+      dispatch(newItem(lastID, textData));
     }
     setText("");
   };
@@ -36,10 +36,10 @@ function AddItem() {
   };
 
   const handleKeyPress = (event: React.KeyboardEvent) => {
-    if(event.code === "Enter") {
-      handleClick()
+    if (event.code === "Enter") {
+      handleClick();
     }
-  }
+  };
 
   return (
     <form
@@ -56,7 +56,7 @@ function AddItem() {
         autoFocus
         value={textData}
         onChange={handleChange}
-        onKeyPress ={handleKeyPress}
+        onKeyPress={handleKeyPress}
       />
       <button type="button" onClick={handleClick} className="add">
         +
