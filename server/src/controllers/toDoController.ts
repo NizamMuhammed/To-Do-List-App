@@ -24,12 +24,21 @@ const createToDo = async (
   req: express.Request,
   res: express.Response
 ): Promise<void> => {
-  const toDo = new ToDo({
-    id: req.body.id,
-    title: req.body.title,
-    completed: req.body.completed,
+  ToDo.findOne({
+    $or: [{ id: req.body.id }],
+  }).then((res) => {
+    if (res == null) {
+      const toDo = new ToDo({
+        id: req.body.id,
+        title: req.body.title,
+        completed: req.body.completed,
+      });
+      toDo.save();
+    } else {
+      console.log("Duplicate ID found in DB")
+    }
   });
-  toDo.save();
+
   res.redirect("/home");
 };
 
@@ -41,7 +50,7 @@ const deleteToDo = async (
     if (!err) {
       console.log("Deleted one item");
     } else {
-      console.log("Error while deletion: " + err)
+      console.log("Error while deletion: " + err);
     }
   });
   res.redirect("/home");
