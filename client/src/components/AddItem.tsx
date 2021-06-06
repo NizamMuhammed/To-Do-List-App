@@ -12,6 +12,7 @@ function AddItem() {
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     const newData = {
+      id: 1,
       title: textData,
       completed: false,
     };

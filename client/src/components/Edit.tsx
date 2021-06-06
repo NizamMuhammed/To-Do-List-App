@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { editClicked } from "../redux/Actions";
+import { editClicked } from "../redux/EditItem/EditActions";
 
 function Edit(props: { id: string; title: string }) {
   const dispatch = useDispatch();

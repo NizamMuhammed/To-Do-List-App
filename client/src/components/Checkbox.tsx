@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function Checkbox(props: { completed: boolean; id: string }) {
+function Checkbox(props: { completed: boolean; id: number }) {
   const [isChecked, setChecked] = useState(props.completed);
   /**
    * useState hooks are used to manage changing values in a component

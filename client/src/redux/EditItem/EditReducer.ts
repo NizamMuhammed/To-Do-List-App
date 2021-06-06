@@ -1,4 +1,4 @@
-import { EDIT_CLICKED, CANCEL_CLICKED, EDITED_TITLE } from "./ActionType";
+import { EDIT_CLICKED, CANCEL_CLICKED, EDITED_TITLE } from "./EditActionType";
 
 export const initialState = {
   editClicked: false,

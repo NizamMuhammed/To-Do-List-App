@@ -1,4 +1,4 @@
-import { EDIT_CLICKED, CANCEL_CLICKED, EDITED_TITLE } from "./ActionType";
+import { EDIT_CLICKED, CANCEL_CLICKED, EDITED_TITLE } from "./EditActionType";
 /**
  * Actions - Specify what operation is to be done by the Reducer
  * type, payload are used as per convention

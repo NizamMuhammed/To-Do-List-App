@@ -1,4 +1,4 @@
-import { initialState } from "./Reducers";
+import { initialState } from "./EditReducer";
 /**
  * Better to create action types as separate constants
  * also called in Reducer
