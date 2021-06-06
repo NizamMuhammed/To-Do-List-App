@@ -71,7 +71,7 @@ export const listReducer = (
           state.falseArray,
           action.payload.id
         );
-        const sortedTrueArr = sortList(state.trueArray, selectedItem)
+        const sortedTrueArr = sortList(state.trueArray, selectedItem);
         return {
           ...state,
           trueArray: sortedTrueArr,
@@ -83,7 +83,7 @@ export const listReducer = (
           state.trueArray,
           action.payload.id
         );
-        const sortedFalseArr = sortList(state.falseArray, selectedItem)
+        const sortedFalseArr = sortList(state.falseArray, selectedItem);
         return {
           ...state,
           falseArray: sortedFalseArr,

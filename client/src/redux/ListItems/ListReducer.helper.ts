@@ -26,7 +26,7 @@ export const deleteItemFromList = (
 };
 
 export const sortList = (array: itemType[], item: itemType): itemType[] => {
-  array.push(item)
+  array.push(item);
   const sortedArray = array.sort(function (a, b) {
     return a.id > b.id ? 1 : -1;
   });

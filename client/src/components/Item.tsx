@@ -18,9 +18,7 @@ function Item(props: { data: itemType }) {
    */
   const editClickedStatus = useSelector((store: any) => store.edit.editClicked);
   const editClickedId = useSelector((store: any) => store.edit.itemId);
-  const editClickedTitle = useSelector(
-    (store: any) => store.edit.itemTitle
-  );
+  const editClickedTitle = useSelector((store: any) => store.edit.itemTitle);
   const dispatch = useDispatch();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +38,7 @@ function Item(props: { data: itemType }) {
           onChange={handleChange}
           value={editClickedTitle}
           style={{ width: "275px" }}
-          />
+        />
       )}
       {!(editClickedStatus && editClickedId === itemData.id) ? (
         <Edit id={itemData.id} title={itemData.title} />
