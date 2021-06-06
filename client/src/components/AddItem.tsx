@@ -14,7 +14,7 @@ function AddItem() {
   let lastID: number = useSelector((listStore: any) => listStore.list.lastID);
   const dispatch = useDispatch();
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleClick = () => {
     lastID = lastID + 1;
     const newData = {
       id: lastID,
@@ -25,13 +25,21 @@ function AddItem() {
       .post("http://localhost:4000/home", newData)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    dispatch(newItem(lastID, textData));
+    if(textData !== "") {
+      dispatch(newItem(lastID, textData))
+    }
     setText("");
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
   };
+
+  const handleKeyPress = (event: React.KeyboardEvent) => {
+    if(event.code === "Enter") {
+      handleClick()
+    }
+  }
 
   return (
     <form
@@ -48,6 +56,7 @@ function AddItem() {
         autoFocus
         value={textData}
         onChange={handleChange}
+        onKeyPress ={handleKeyPress}
       />
       <button type="button" onClick={handleClick} className="add">
         +
