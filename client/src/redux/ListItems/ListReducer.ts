@@ -4,13 +4,14 @@ import {
   SET_FALSE_ARRAY,
   SET_TRUE_ARRAY,
   DELETE_ITEM,
+  CHECKBOX_CLICKED,
   listStateType,
 } from "./ListActionType";
+import itemType from "../../item.type";
+import { findItem, deleteItemFromList, sortList } from "./ListReducer.helper";
 
 const initialState: listStateType = {
   lastID: 0,
-  selectedID: 0,
-  selectedTitle: "",
   falseArray: [],
   trueArray: [],
 };
@@ -36,7 +37,6 @@ export const listReducer = (
         createdAt: "",
         updatedAt: "",
       };
-      console.log(newItem);
       return {
         ...state,
         lastID: id,
@@ -62,7 +62,33 @@ export const listReducer = (
       return {
         ...state,
         falseArray: fiilteredFalseArray,
-        trueArray: fiilteredTrueArray
+        trueArray: fiilteredTrueArray,
+      };
+    case CHECKBOX_CLICKED:
+      if (action.payload.completed) {
+        const selectedItem = findItem(state.falseArray, action.payload.id);
+        const falseArr: itemType[] = deleteItemFromList(
+          state.falseArray,
+          action.payload.id
+        );
+        const sortedTrueArr = sortList(state.trueArray, selectedItem)
+        return {
+          ...state,
+          trueArray: sortedTrueArr,
+          falseArray: falseArr,
+        };
+      } else {
+        const selectedItem = findItem(state.trueArray, action.payload.id);
+        const trueArr: itemType[] = deleteItemFromList(
+          state.trueArray,
+          action.payload.id
+        );
+        const sortedFalseArr = sortList(state.falseArray, selectedItem)
+        return {
+          ...state,
+          falseArray: sortedFalseArr,
+          trueArray: trueArr,
+        };
       }
     default:
       return state;

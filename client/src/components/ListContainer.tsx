@@ -18,12 +18,16 @@ function ListContainer() {
     (listStore: any) => listStore.list.trueArray
   );
   const dispatch = useDispatch();
-  const fullArray = [...falseArray, ...trueArray]
+  const fullArray = [...falseArray, ...trueArray];
 
   const findMax = (arr: itemType[]) => {
     let idArray = arr.map((item) => item.id);
-    const maxID: number = Math.max(...idArray);
-    return maxID;
+    if (idArray.length > 0) {
+      const maxID: number = Math.max(...idArray);
+      return maxID;
+    } else {
+      return 0;
+    }
   };
 
   useEffect(() => {

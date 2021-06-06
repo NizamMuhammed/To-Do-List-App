@@ -1,5 +1,12 @@
 import itemType from "../../item.type";
-import { LAST_ID, NEW_ITEM, SET_FALSE_ARRAY, SET_TRUE_ARRAY, DELETE_ITEM } from "./ListActionType";
+import {
+  LAST_ID,
+  NEW_ITEM,
+  SET_FALSE_ARRAY,
+  SET_TRUE_ARRAY,
+  DELETE_ITEM,
+  CHECKBOX_CLICKED,
+} from "./ListActionType";
 
 export const lastId = (id: number) => {
   return {
@@ -18,20 +25,27 @@ export const newItem = (id: number, title: string) => {
 export const setFalseArray = (falseArr: itemType[]) => {
   return {
     type: SET_FALSE_ARRAY,
-    payload: falseArr
-  }
-}
+    payload: falseArr,
+  };
+};
 
 export const setTrueArray = (trueArr: itemType[]) => {
   return {
     type: SET_TRUE_ARRAY,
-    payload: trueArr
-  }
-}
+    payload: trueArr,
+  };
+};
 
 export const deleteItem = (id: number) => {
   return {
     type: DELETE_ITEM,
-    payload: id
-  }
-}
+    payload: id,
+  };
+};
+
+export const checkboxClicked = (id: number, completed: boolean) => {
+  return {
+    type: CHECKBOX_CLICKED,
+    payload: { id, completed },
+  };
+};
