@@ -26,9 +26,32 @@ export const deleteItemFromList = (
 };
 
 export const sortList = (array: itemType[], item: itemType): itemType[] => {
-  array.push(item)
+  array.push(item);
   const sortedArray = array.sort(function (a, b) {
     return a.id > b.id ? 1 : -1;
   });
   return sortedArray;
+};
+
+export const foundInTrueArray = (id: number, array: itemType[]): boolean => {
+  let status: boolean = false;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].id === id) {
+      status = true;
+    }
+  }
+  return status;
+};
+
+export const updatedArray = (
+  id: number,
+  title: string,
+  array: itemType[]
+): itemType[] => {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].id === id) {
+      array[i].title = title;
+    }
+  }
+  return array;
 };

@@ -18,7 +18,7 @@ function Cancel() {
 
   return (
     <button type="button" onClick={handleClick} className="delete">
-        ❌
+      ❌
     </button>
   );
 }

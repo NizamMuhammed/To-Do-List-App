@@ -3,8 +3,8 @@ import { listReducer } from "./ListItems/ListReducer";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-    edit: editReducer,
-    list: listReducer
-})
+  edit: editReducer,
+  list: listReducer,
+});
 
-export default rootReducer
+export default rootReducer;

@@ -6,6 +6,7 @@ import {
   SET_TRUE_ARRAY,
   DELETE_ITEM,
   CHECKBOX_CLICKED,
+  ACCEPT_CLICKED_LIST,
 } from "./ListActionType";
 
 export const lastId = (id: number) => {
@@ -47,5 +48,12 @@ export const checkboxClicked = (id: number, completed: boolean) => {
   return {
     type: CHECKBOX_CLICKED,
     payload: { id, completed },
+  };
+};
+
+export const acceptClickedList = (id: number, title: string) => {
+  return {
+    type: ACCEPT_CLICKED_LIST,
+    payload: { id, title },
   };
 };

@@ -1,4 +1,9 @@
-import { EDIT_CLICKED, CANCEL_CLICKED, EDITED_TITLE } from "./EditActionType";
+import {
+  EDIT_CLICKED,
+  CANCEL_CLICKED,
+  EDITED_TITLE,
+  ACCEPT_CLICKED,
+} from "./EditActionType";
 
 export const initialState = {
   editClicked: false,
@@ -28,6 +33,12 @@ export const editReducer = (state = initialState, action: any) => {
       return {
         ...state,
         itemTitle: action.payload,
+      };
+    case ACCEPT_CLICKED:
+      return {
+        editClicked: false,
+        itemId: "",
+        itemTitle: "",
       };
     default:
       return state;

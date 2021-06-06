@@ -1,4 +1,9 @@
-import { EDIT_CLICKED, CANCEL_CLICKED, EDITED_TITLE } from "./EditActionType";
+import {
+  EDIT_CLICKED,
+  CANCEL_CLICKED,
+  EDITED_TITLE,
+  ACCEPT_CLICKED,
+} from "./EditActionType";
 /**
  * Actions - Specify what operation is to be done by the Reducer
  * type, payload are used as per convention
@@ -21,5 +26,11 @@ export const editedTitle = (title: string) => {
   return {
     type: EDITED_TITLE,
     payload: title,
+  };
+};
+
+export const acceptClicked = () => {
+  return {
+    type: ACCEPT_CLICKED,
   };
 };

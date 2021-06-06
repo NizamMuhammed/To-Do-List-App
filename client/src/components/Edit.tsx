@@ -14,7 +14,6 @@ function Edit(props: { id: number; title: string }) {
     <button type="button" onClick={handleClick} className="update">
       ✏️
     </button>
-    
   );
 }
 
