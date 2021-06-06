@@ -1,5 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux"
+import {
+  newItem
+} from "../redux/ListItems/ListActions"
 
 /**
  * Uses axios to post newly entered data
@@ -9,10 +13,15 @@ import React, { useState } from "react";
 
 function AddItem() {
   const [textData, setText] = useState<string>("");
+  let lastID: number = useSelector(
+    (listStore: any) => listStore.list.lastID
+  )
+  const dispatch = useDispatch()
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    lastID = lastID + 1
     const newData = {
-      id: 1,
+      id: lastID,
       title: textData,
       completed: false,
     };
@@ -20,6 +29,7 @@ function AddItem() {
       .post("http://localhost:4000/home", newData)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    dispatch(newItem(lastID, textData))
     setText("")
   };
 

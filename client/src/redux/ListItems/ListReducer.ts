@@ -39,6 +39,7 @@ export const listReducer = (
       console.log(newItem);
       return {
         ...state,
+        lastID: id,
         falseArray: state?.falseArray?.concat(newItem),
       };
     case SET_FALSE_ARRAY:
