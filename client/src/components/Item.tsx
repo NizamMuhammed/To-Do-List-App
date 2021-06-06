@@ -40,7 +40,7 @@ function Item(props: { data: itemType }) {
           onChange={handleChange}
           value={editClickedTitle}
           style={{ width: "275px" }}
-        />
+          />
       )}
       {!(editClickedStatus && editClickedId === itemData.id) ? (
         <Edit id={itemData.id} title={itemData.title} />
