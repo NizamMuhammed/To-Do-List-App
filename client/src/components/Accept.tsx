@@ -8,7 +8,7 @@ import axios from "axios";
  * @param props
  * @returns JSX Form Element
  */
-function Accept(props: { title: string; id: string }) {
+function Accept(props: { title: string; id: number }) {
   const handleClick = (event:React.MouseEvent<HTMLElement>) => {
     const newData = {
       title: props.title,

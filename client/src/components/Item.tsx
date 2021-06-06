@@ -7,8 +7,7 @@ import itemType from "../item.type";
 import Accept from "./Accept";
 import Cancel from "./Cancel";
 import { useSelector, useDispatch } from "react-redux";
-import { rootStateType } from "../redux/ActionType";
-import { editedTitle } from "../redux/Actions";
+import { editedTitle } from "../redux/EditItem/EditActions";
 
 function Item(props: { data: itemType }) {
   const itemData: itemType = props.data;
@@ -17,12 +16,10 @@ function Item(props: { data: itemType }) {
    * and store it in a variable for using that in the component
    * rootStateType is of same type as the State in Redux Store
    */
-  const editClickedStatus = useSelector(
-    (store: rootStateType) => store.editClicked
-  );
-  const editClickedId = useSelector((store: rootStateType) => store.itemId);
+  const editClickedStatus = useSelector((store: any) => store.edit.editClicked);
+  const editClickedId = useSelector((store: any) => store.edit.itemId);
   const editClickedTitle = useSelector(
-    (store: rootStateType) => store.itemTitle
+    (store: any) => store.edit.itemTitle
   );
   const dispatch = useDispatch();
 
@@ -32,8 +29,8 @@ function Item(props: { data: itemType }) {
 
   return (
     <div className="item">
-      <Checkbox completed={itemData.completed} id={itemData._id} />
-      {!(editClickedStatus && editClickedId === itemData._id) ? (
+      <Checkbox completed={itemData.completed} id={itemData.id} />
+      {!(editClickedStatus && editClickedId === itemData.id) ? (
         <ItemText title={itemData.title} />
       ) : (
         <input
@@ -42,16 +39,16 @@ function Item(props: { data: itemType }) {
           autoFocus
           onChange={handleChange}
           value={editClickedTitle}
-          style={{ width: "260px" }}
-        />
+          style={{ width: "275px" }}
+          />
       )}
-      {!(editClickedStatus && editClickedId === itemData._id) ? (
-        <Edit id={itemData._id} title={itemData.title} />
+      {!(editClickedStatus && editClickedId === itemData.id) ? (
+        <Edit id={itemData.id} title={itemData.title} />
       ) : (
-        <Accept title={editClickedTitle} id={itemData._id} />
+        <Accept title={editClickedTitle} id={itemData.id} />
       )}
-      {!(editClickedStatus && editClickedId === itemData._id) ? (
-        <Delete id={itemData._id} />
+      {!(editClickedStatus && editClickedId === itemData.id) ? (
+        <Delete id={itemData.id} />
       ) : (
         <Cancel />
       )}

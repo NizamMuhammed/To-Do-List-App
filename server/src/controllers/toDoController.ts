@@ -24,11 +24,21 @@ const createToDo = async (
   req: express.Request,
   res: express.Response
 ): Promise<void> => {
-  const toDo = new ToDo({
-    title: req.body.title,
-    completed: req.body.completed,
+  ToDo.findOne({
+    $or: [{ id: req.body.id }],
+  }).then((res) => {
+    if (res == null) {
+      const toDo = new ToDo({
+        id: req.body.id,
+        title: req.body.title,
+        completed: req.body.completed,
+      });
+      toDo.save();
+    } else {
+      console.log("Duplicate ID found in DB")
+    }
   });
-  toDo.save();
+
   res.redirect("/home");
 };
 
@@ -36,9 +46,11 @@ const deleteToDo = async (
   req: express.Request,
   res: express.Response
 ): Promise<void> => {
-  ToDo.deleteOne({ _id: req.body.id }, function (err) {
+  ToDo.deleteOne({ id: req.body.id }, function (err: any) {
     if (!err) {
       console.log("Deleted one item");
+    } else {
+      console.log("Error while deletion: " + err);
     }
   });
   res.redirect("/home");
@@ -49,12 +61,12 @@ const updateToDo = async (
   res: express.Response
 ): Promise<void> => {
   ToDo.findOneAndUpdate(
-    { _id: req.body.id },
+    { id: req.body.id },
     { title: req.body.title },
     null,
     function (err, docs) {
       if (err) {
-        console.log(err);
+        console.log("Error while updation: " + err);
       } else {
         console.log("Updated");
       }
@@ -68,7 +80,7 @@ const statusUpdate = async (
   res: express.Response
 ): Promise<void> => {
   ToDo.findOneAndUpdate(
-    { _id: req.body.id },
+    { id: req.body.id },
     { completed: req.body.completed },
     null,
     function (err, docs) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { editCancel } from "../redux/Actions";
+import { editCancel } from "../redux/EditItem/EditActions";
 
 function Cancel() {
   /**
