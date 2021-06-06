@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { editClicked } from "../redux/EditItem/EditActions";
 
-function Edit(props: { id: string; title: string }) {
+function Edit(props: { id: number; title: string }) {
   const dispatch = useDispatch();
 
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {

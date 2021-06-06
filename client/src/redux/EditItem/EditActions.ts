@@ -4,7 +4,7 @@ import { EDIT_CLICKED, CANCEL_CLICKED, EDITED_TITLE } from "./EditActionType";
  * type, payload are used as per convention
  */
 
-export const editClicked = (id: string, title: string) => {
+export const editClicked = (id: number, title: string) => {
   return {
     type: EDIT_CLICKED,
     payload: { id, title },

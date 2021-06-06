@@ -1,5 +1,5 @@
 import itemType from "../../item.type";
-import { LAST_ID, NEW_ITEM, SET_FALSE_ARRAY, SET_TRUE_ARRAY, SET_FULL_ARRAY, DELETE_ITEM } from "./ListActionType";
+import { LAST_ID, NEW_ITEM, SET_FALSE_ARRAY, SET_TRUE_ARRAY, DELETE_ITEM } from "./ListActionType";
 
 export const lastId = (id: number) => {
   return {
@@ -26,13 +26,6 @@ export const setTrueArray = (trueArr: itemType[]) => {
   return {
     type: SET_TRUE_ARRAY,
     payload: trueArr
-  }
-}
-
-export const setFullArray = (fullArr: itemType[]) => {
-  return {
-    type: SET_FULL_ARRAY,
-    payload: fullArr
   }
 }
 

@@ -7,15 +7,18 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setFalseArray,
   setTrueArray,
-  setFullArray,
   lastId,
 } from "../redux/ListItems/ListActions";
 
 function ListContainer() {
-  const fullArray: itemType[] = useSelector(
-    (listStore: any) => listStore.list.fullArray
+  const falseArray: itemType[] = useSelector(
+    (listStore: any) => listStore.list.falseArray
+  );
+  const trueArray: itemType[] = useSelector(
+    (listStore: any) => listStore.list.trueArray
   );
   const dispatch = useDispatch();
+  const fullArray = [...falseArray, ...trueArray]
 
   const findMax = (arr: itemType[]) => {
     let idArray = arr.map((item) => item.id);
@@ -39,7 +42,6 @@ function ListContainer() {
         dispatch(setFalseArray(falseArr));
         dispatch(setTrueArray(trueArr));
         const listItems: itemType[] = [...falseArr, ...trueArr];
-        dispatch(setFullArray(listItems));
         const maxId = findMax(listItems);
         dispatch(lastId(maxId));
       })

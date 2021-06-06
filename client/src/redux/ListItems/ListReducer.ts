@@ -3,7 +3,6 @@ import {
   NEW_ITEM,
   SET_FALSE_ARRAY,
   SET_TRUE_ARRAY,
-  SET_FULL_ARRAY,
   DELETE_ITEM,
   listStateType,
 } from "./ListActionType";
@@ -14,7 +13,6 @@ const initialState: listStateType = {
   selectedTitle: "",
   falseArray: [],
   trueArray: [],
-  fullArray: [],
 };
 
 export const listReducer = (
@@ -53,16 +51,18 @@ export const listReducer = (
         ...state,
         trueArray: action.payload,
       };
-    case SET_FULL_ARRAY:
-      return {
-        ...state,
-        fullArray: action.payload,
-      };
     case DELETE_ITEM:
-      let fiilteredArray = state.fullArray.filter(
+      const fiilteredFalseArray = state.falseArray.filter(
         (item) => item.id !== action.payload
       );
-      return state
+      const fiilteredTrueArray = state.trueArray.filter(
+        (item) => item.id !== action.payload
+      );
+      return {
+        ...state,
+        falseArray: fiilteredFalseArray,
+        trueArray: fiilteredTrueArray
+      }
     default:
       return state;
   }

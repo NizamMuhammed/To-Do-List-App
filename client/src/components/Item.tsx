@@ -39,15 +39,15 @@ function Item(props: { data: itemType }) {
           autoFocus
           onChange={handleChange}
           value={editClickedTitle}
-          style={{ width: "240px" }}
+          style={{ width: "275px" }}
         />
       )}
-      {!(editClickedStatus && editClickedId === itemData._id) ? (
-        <Edit id={itemData._id} title={itemData.title} />
+      {!(editClickedStatus && editClickedId === itemData.id) ? (
+        <Edit id={itemData.id} title={itemData.title} />
       ) : (
-        <Accept title={editClickedTitle} id={itemData._id} />
+        <Accept title={editClickedTitle} id={itemData.id} />
       )}
-      {!(editClickedStatus && editClickedId === itemData._id) ? (
+      {!(editClickedStatus && editClickedId === itemData.id) ? (
         <Delete id={itemData.id} />
       ) : (
         <Cancel />
