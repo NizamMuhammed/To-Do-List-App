@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { acceptClicked } from "../redux/EditItem/EditActions";
+import { acceptClickedList } from "../redux/ListItems/ListActions";
 
 /**
  * Uses the data sent from the Edit page as props
@@ -14,6 +15,7 @@ function Accept(props: { title: string; id: number }) {
   const dispatch = useDispatch();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     dispatch(acceptClicked());
+    dispatch(acceptClickedList(props.id, props.title));
     const newData = {
       title: props.title,
       id: props.id,

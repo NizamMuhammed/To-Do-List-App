@@ -35,7 +35,7 @@ const createToDo = async (
       });
       toDo.save();
     } else {
-      console.log("Duplicate ID found in DB")
+      console.log("Duplicate ID found in DB");
     }
   });
 

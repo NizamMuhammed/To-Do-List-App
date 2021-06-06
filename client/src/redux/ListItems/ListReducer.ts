@@ -5,10 +5,17 @@ import {
   SET_TRUE_ARRAY,
   DELETE_ITEM,
   CHECKBOX_CLICKED,
+  ACCEPT_CLICKED_LIST,
   listStateType,
 } from "./ListActionType";
 import itemType from "../../item.type";
-import { findItem, deleteItemFromList, sortList } from "./ListReducer.helper";
+import {
+  findItem,
+  deleteItemFromList,
+  sortList,
+  foundInTrueArray,
+  updatedArray,
+} from "./ListReducer.helper";
 
 const initialState: listStateType = {
   lastID: 0,
@@ -90,6 +97,16 @@ export const listReducer = (
           trueArray: trueArr,
         };
       }
+    case ACCEPT_CLICKED_LIST:
+      const foundStatus = foundInTrueArray(action.payload.id, state.trueArray);
+      if (foundStatus) {
+        updatedArray(action.payload.id, action.payload.title, state.trueArray);
+      } else {
+        updatedArray(action.payload.id, action.payload.title, state.falseArray);
+      }
+      return {
+        ...state,
+      };
     default:
       return state;
   }
